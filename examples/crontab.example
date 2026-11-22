@@ -1,0 +1,4 @@
+# Weekdays: check the remote screen against the reference, then that the expected text is visible.
+# Put BLIKVM_URL / BLIKVM_USER / BLIKVM_PASS in the environment of the job (e.g. a 0600 env file), never in this file.
+0 9 * * 1-5 . $HOME/.blikvm.env && cd $HOME/blikvm && python3 compare_screen.py >> $HOME/blikvm-captures/compare.log 2>&1
+7 9 * * 1-5 . $HOME/.blikvm.env && cd $HOME/blikvm && python3 check_text.py --expect Ready --roi 1600,200,300,200 >> $HOME/blikvm-captures/check_text.log 2>&1
